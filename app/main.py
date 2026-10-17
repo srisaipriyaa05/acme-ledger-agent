@@ -116,7 +116,7 @@ def fallback(q):
     elif any(x in s for x in ["top customer","biggest customer","highest-spending customer","highest spending customer"]):metric="top_customer"
     elif any(x in s for x in ["list products","which products","all products","product names"]):metric="list_products"
     elif any(x in s for x in ["list customers","which customers","all customers","customer ids"]):metric="list_customers"
-    elif any(x in s for x in ["how many customers","number of customers","count customers"]):metric="count_customers"
+    elif (any(x in s for x in ["how many customers","number of customers","count customers","distinct customers","unique customers"]) or re.search(r"\bhow many\b.{0,50}\bcustomers\b", s)) and any(x in s for x in ["customer","customers"]):metric="count_customers"
     elif any(x in s for x in ["how many products","number of products","count products"]):metric="count_products"
     elif "product" in s and any(x in s for x in ["breakdown","by product","per product","each product"]):metric="product_breakdown"
     elif "customer" in s and any(x in s for x in ["breakdown","by customer","per customer","each customer"]):metric="customer_breakdown"
